@@ -99,7 +99,7 @@ function helper(board, visited, row, col, i, j, node, res) {
     }
 }
 
-var Node = function(char) {
+var TrieNode = function(char) {
     this.char = char;
     this.dict = {};
     this.isWord = false;
@@ -115,11 +115,11 @@ var Node = function(char) {
             }
         }
         return str.reverse().join('');
-    }
-}
+    };
+};
 
 function buildTrie(words) {
-    var root = new Node();
+    var root = new TrieNode();
     var len = words.length;
     var i;
     var runner = root;
@@ -135,9 +135,9 @@ function buildTrie(words) {
         while (j < curWord.length) {
             curChar = curWord[j];
             if (runner.dict[curChar]) {
-                runner = runner.dict[curChar]
+                runner = runner.dict[curChar];
             } else {
-                newNode = new Node(curChar);
+                newNode = new TrieNode(curChar);
                 newNode.parent = runner;
                 runner.dict[curChar] = newNode;
                 runner = newNode;
@@ -148,21 +148,4 @@ function buildTrie(words) {
     }
     return root;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
